@@ -1,0 +1,31 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.kazoe.desktop.applications">
+    <method name="backHome" />
+    <method name="count">
+      <arg type="i" direction="out"/>
+    </method>
+    <method name="currentApplicationPid">
+      <arg type="i" direction="out"/>
+    </method>
+    <method name="applicationName">
+      <arg type="s" direction="out"/>
+      <arg name="id" type="i" direction="in"/>
+    </method>
+    <method name="applicationPid">
+      <arg type="i" direction="out"/>
+      <arg name="id" type="i" direction="in"/>
+    </method>
+    <method name="applicationFocus">
+      <arg type="i" direction="out"/>
+      <arg name="id" type="i" direction="in"/>
+    </method>
+    <method name="hideApplicationPid">
+      <arg name="pid" type="x" direction="in"/>
+    </method>
+    <method name="raiseApplicationPid">
+      <arg name="pid" type="x" direction="in"/>
+    </method>
+  </interface>
+</node>

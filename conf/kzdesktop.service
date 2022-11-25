@@ -1,0 +1,21 @@
+[Unit]
+Description=KaZoe desktop compositor
+Wants=dbus.service
+
+[Service]
+Restart=always
+RestartSec=1s
+Type=notify
+NotifyAccess=main
+ExecStart=/usr/bin/kzdesktop
+StandardOutput=journal+console
+WatchdogSec=5
+
+Environment="QT_QPA_PLATFORM=eglfs"
+Environment="QT_WAYLAND_SERVER_BUFFER_INTEGRATION=dmabuf-server"
+Environment="QT_WAYLAND_CLIENT_BUFFER_INTEGRATION=linux-dmabuf-unstable-v1"
+Environment="QT_IM_MODULE=qtvirtualkeyboard"
+Environment="XDG_DATA_DIRS=/var/volatile:/usr/share"
+
+[Install]
+WantedBy=default.target

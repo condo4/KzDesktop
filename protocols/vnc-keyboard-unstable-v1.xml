@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol name="vnc_keyboard_unstable_v1">
+
+  <interface name="vnc_keyboard_v1" version="1">
+    <description summary="vnc keyboard">
+      The vnc keyboard provides an application with requests which maps
+      wit the vnc protocol. It's not a keyboard interface in that it
+      doesn't know anything about keymaps.
+
+    </description>
+
+    <request name="key">
+      <description summary="key event">
+        A key was pressed or released.
+        The time argument is a timestamp with millisecond granularity, with an
+        undefined base. All requests regarding a single object must share the
+        same clock.
+        State carries a value from the key_state enumeration.
+      </description>
+      <arg name="time" type="uint" summary="timestamp with millisecond granularity"/>
+      <arg name="keysym" type="uint" summary="key symbol"/>
+      <arg name="pressed" type="uint" summary="physical state of the key"/>
+    </request>
+
+    <request name="keycode">
+      <description summary="key code event">
+        A key was pressed or released.
+        The time argument is a timestamp with millisecond granularity, with an
+        undefined base. All requests regarding a single object must share the
+        same clock.
+        State carries a value from the key_state enumeration.
+      </description>
+      <arg name="time" type="uint" summary="timestamp with millisecond granularity"/>
+      <arg name="code" type="uint" summary="key code"/>
+      <arg name="pressed" type="uint" summary="physical state of the key"/>
+    </request>
+
+    <request name="destroy" type="destructor" since="1">
+      <description summary="destroy the virtual keyboard keyboard object"/>
+    </request>
+  </interface>
+
+  <interface name="vnc_virtual_keyboard_manager_v1" version="1">
+    <description summary="virtual keyboard manager">
+      A virtual keyboard manager allows an application to provide key
+      input events (using RFB key encoding)
+    </description>
+
+    <enum name="error">
+      <entry name="unauthorized" value="0" summary="client not authorized to use the interface"/>
+    </enum>
+
+    <request name="create_virtual_keyboard">
+      <description summary="Create a new virtual keyboard">
+        Creates a new vnc keyboard.
+      </description>
+      <arg name="id" type="new_id" interface="vnc_keyboard_v1"/>
+    </request>
+  </interface>
+</protocol>
