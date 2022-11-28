@@ -25,6 +25,7 @@ set(PROJECT_QMLS
     qml/DesktopGridView.qml
     qml/StatusBar.qml
     qml/SystrayView.qml
+    qml/Systray.qml
     qml/VKeyboard.qml
 )
 

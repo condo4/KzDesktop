@@ -62,7 +62,7 @@ Rectangle {
         anchors.left: backHome.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.right: systrayview.left
+        anchors.right: systray.left
         anchors.leftMargin: 4
         anchors.topMargin: 4
         clip: true
@@ -132,6 +132,16 @@ Rectangle {
                 }
             }
         }
+    }
+
+    Systray {
+        id: systray
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.right: systrayview.left
+        anchors.topMargin: 2
+        anchors.bottomMargin: 2
+        anchors.rightMargin: 2
     }
 
     SystrayView {
